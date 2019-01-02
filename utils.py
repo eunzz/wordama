@@ -1,6 +1,8 @@
 from typing import List
 
 import xlrd
+import xlwt
+
 
 from data import Word
 
@@ -22,9 +24,20 @@ def read_words_from_db(excel_file_path: str) -> List[Word]:
     return words
 
 
-def sync_db(excel_file_path: str, words: List[Word]):
-    # TODO: Not implemented
-    pass
+def write_db(excel_file_path: str, words: List[Word]):
+    # ref: https://www.blog.pythonlibrary.org/2014/03/24/creating-microsoft-excel-spreadsheets-with-python-and-xlwt/
+    new_wb = xlwt.Workbook()
+    # TODO: should refine sheet_name
+    new_sheet = new_wb.add_sheet("day1")
+    new_sheet.write(0, 0, "word")
+    new_sheet.write(0, 1, "meaning")
+    new_sheet.write(0, 2, "wrong_nums")
+
+    for idx, word in enumerate(words):
+        new_sheet.write(idx + 1, 0, word.word)
+        new_sheet.write(idx + 1, 1, word.meaning)
+        new_sheet.write(idx + 1, 2, word.wrong_nums)
+    new_wb.save(excel_file_path)
 
 
 def count_remaining_words(words: List[Word]) -> int:
