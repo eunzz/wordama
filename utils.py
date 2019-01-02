@@ -7,11 +7,11 @@ import xlwt
 from data import Word
 
 
-def read_words_from_db(excel_file_path: str) -> List[Word]:
+def read_words_from_db(excel_file_path: str, day_index: int) -> List[Word]:
     words = []
     wb = xlrd.open_workbook(excel_file_path)
     # TODO: should be able to select sheet_num
-    sheet = wb.sheet_by_index(0)
+    sheet = wb.sheet_by_index(day_index)
     for row_num in range(0, sheet.nrows):
         if row_num == 0:
             continue
