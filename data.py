@@ -11,8 +11,10 @@ class Word:
         self.is_checked = False
 
     def check_answer(self):
-        answer = input("word >")
+        print(f"meaning: {self.meaning}")
+        answer = input("word > ")
         if answer == self.word:
+            print("Good job")
             self.is_checked = True
             return True
         else:
