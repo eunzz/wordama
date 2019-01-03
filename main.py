@@ -1,4 +1,4 @@
-from utils import read_words_from_db, write_db, count_remaining_words
+from utils import read_words_from_db, update_db, count_remaining_words
 
 EXCEL_FILE_PATH = "absolutely_essential_words_504.xls"
 
@@ -13,7 +13,7 @@ def run_test(day_index: int, file_path: str):
         remaining_words_num = count_remaining_words(words)
         print(f"remaining: {remaining_words_num}")
     print("Completed!")
-    write_db(file_path, day_index, words)
+    update_db(file_path, day_index, words)
 
 
 if __name__ == "__main__":

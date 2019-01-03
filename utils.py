@@ -26,7 +26,7 @@ def read_words_from_db(excel_file_path: str, day_index: int) -> List[Word]:
     return words
 
 
-def write_db(excel_file_path: str, day_index: int, words: List[Word]):
+def update_db(excel_file_path: str, day_index: int, words: List[Word]):
     # ref: https://www.blog.pythonlibrary.org/2014/03/24/creating-microsoft-excel-spreadsheets-with-python-and-xlwt/
     existing_workbook = xlrd.open_workbook(excel_file_path)
     new_wb = copy(existing_workbook)
