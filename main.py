@@ -1,3 +1,5 @@
+import random
+
 from utils import read_words_from_db, update_db, count_remaining_words
 
 EXCEL_FILE_PATH = "absolutely_essential_words_504.xls"
@@ -7,6 +9,7 @@ def run_test(day_index: int, file_path: str):
     words = read_words_from_db(file_path, day_index)
     remaining_words_num = count_remaining_words(words)
     while remaining_words_num != 0:
+        random.shuffle(words)
         for word in words:
             if not word.is_checked:
                 word.check_answer()
