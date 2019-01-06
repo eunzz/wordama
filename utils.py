@@ -1,7 +1,6 @@
 from typing import List
 
 import xlrd
-import xlwt
 from xlutils.copy import copy
 
 from data import Word
